@@ -12,7 +12,8 @@
 
   <div ng-controller="grumblesController as grumblesCtrl">
     <div id="createGrumble">
-      <form class='grumbleForm' ng-submit="grumblesCtrl.create()">
+      <a href="#" ng-click="isVisible = !isVisible">New Grumble</a>
+      <form ng-show="isVisible" class='grumbleForm' ng-submit="grumblesCtrl.create()">
         <label>Title</label>
 	<input type="text" name="title" ng-model="grumblesCtrl.title">
         <label>Author Name</label>

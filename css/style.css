@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Helvetica Neue', sans-serif;
   max-width: 800px;
@@ -6,17 +10,10 @@ body {
   padding-top: 0;
 }
 
-input {
+input,
+textarea{
   display: block;
-  width: 40rem;
-}
-textarea {
-  display: block;
-  width: 40rem;
-}
-
-.comments {
-
+  width: 100%;
 }
 
 .comment {
