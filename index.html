@@ -9,12 +9,21 @@
 <body>
   <h1>Grumblr</h1>
 
-  <div id="createGrumble">
-    <button class="new">New Grumble</button>
-    <div class="formContainer"></div>
-  </div>
 
   <div ng-controller="grumblesController as grumblesCtrl">
+    <div id="createGrumble">
+      <form class='grumbleForm' ng-submit="grumblesCtrl.create()">
+        <label>Title</label>
+	<input type="text" name="title" ng-model="grumblesCtrl.title">
+        <label>Author Name</label>
+	<input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
+        <label>Content</label>
+	<textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
+        <label>Photo Url</label>
+	<input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+	<button class="new">New Grumble</button>
+      </form>
+    </div>
     <div class="grumbles" ng-repeat="grumble in grumblesCtrl.grumbles">
       <div class="grumble">
         <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2>
