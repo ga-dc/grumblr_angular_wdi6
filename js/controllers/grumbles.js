@@ -14,6 +14,25 @@
 	content: this.content,
 	photoUrl: this.photoUrl
       })
+      this.title = ""
+      this.authorName = ""
+      this.content = ""
+      this.photoUrl = ""
+      // above 4 lines feel hacky. tried `.$setPristine()` is there a better way?
+    }
+    this.edit = function(index){
+      var grumble = this.grumbles[index] 
+      this.title = grumble.title
+      this.authorName = grumble.authorName
+      this.photoUrl = grumble.photoUrl
+      this.content = grumble.content
+    }
+    this.update = function(index){
+      var grumble = this.grumbles[index] 
+      grumble.title = this.title
+      grumble.authorName = this.authorName
+      grumble.photoUrl = this.photoUrl
+      grumble.content = this.content
     }
   });
 })();
