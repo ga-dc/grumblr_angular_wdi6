@@ -7,18 +7,20 @@
     this.delete = function(index){
       this.grumbles.splice(index, 1)
     }
-    this.create = function(){
-      this.grumbles.unshift({
-        title: this.title,  
-	authorName: this.authorName,
-	content: this.content,
-	photoUrl: this.photoUrl
-      })
+    this.reset = function(){
       this.title = ""
       this.authorName = ""
       this.content = ""
       this.photoUrl = ""
-      // above 4 lines feel hacky. tried `.$setPristine()` is there a better way?
+    }
+    this.create = function(){
+      this.grumbles.unshift({
+        title: this.title,
+        authorName: this.authorName,
+        content: this.content,
+        photoUrl: this.photoUrl
+      })
+      this.reset()
     }
     this.edit = function(index){
       var grumble = this.grumbles[index] 
@@ -28,11 +30,17 @@
       this.content = grumble.content
     }
     this.update = function(index){
-      var grumble = this.grumbles[index] 
+      var grumble = this.grumbles[index]
       grumble.title = this.title
       grumble.authorName = this.authorName
       grumble.photoUrl = this.photoUrl
       grumble.content = this.content
+    }
+    this.formIsVisible = false
+    this.showGrumble = true
+    this.toggleForm = function(){
+      this.formIsVisible = this.formIsVisible ? false : true
+      this.reset()
     }
   });
 })();
