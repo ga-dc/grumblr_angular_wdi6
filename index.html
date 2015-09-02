@@ -12,42 +12,51 @@
 
   <div ng-controller="grumblesController as grumblesCtrl">
     <div id="createGrumble">
+      <!-- would this be better as a method on the controller, 'toggleForm'? -->
       <a href="#" ng-click="isVisible = !isVisible">New Grumble</a>
       <form ng-show="isVisible" name="grumblesCtrl.grumbleForm" class='grumbleForm' ng-submit="grumblesCtrl.create()">
         <label>Title</label>
-	<input type="text" name="title" ng-model="grumblesCtrl.title">
+        <!-- I thought ng-model not scoped to the controller already, but I guess not? -->
+        <input type="text" name="title" ng-model="grumblesCtrl.title">
         <label>Author Name</label>
-	<input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
+        <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
         <label>Content</label>
-	<textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
+        <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
         <label>Photo Url</label>
-	<input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
-	<button class="new">New Grumble</button>
+        <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+        <button class="new">New Grumble</button>
       </form>
     </div>
     <div class="grumbles" ng-repeat="grumble in grumblesCtrl.grumbles">
       <div class="grumble">
+        <!-- I'd maybe prefer using ng-show in both cases, with two properties...
+        `showGrumble` and `editGrumble`. then the button could call a toggle
+        which changes both values? idk... it's more code, but also more explicit
+       -->
         <div ng-hide="editGrumble">
-	  <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2>
-	  by: {{ grumble.authorName }}
-	  <p>
-	    {{ grumble.content }}
-	  </p>
-	  <img ng-src="{{ grumble.photoUrl }}" alt="">
-	</div>
+          <!-- I cleaned up hard vs soft tabs below; also, didn't know about $index, that's nice! -->
+          <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2>
+          by: {{ grumble.authorName }}
+          <p>
+            {{ grumble.content }}
+          </p>
+          <img ng-src="{{ grumble.photoUrl }}" alt="">
+        </div>
         <button class="edit" ng-click="grumblesCtrl.edit($index); editGrumble = !editGrumble">Edit Grumble</button>
-	<form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
-	  <label>Title</label>
-	  <input type="text" name="title" ng-model="grumblesCtrl.title">
-	  <label>Author Name</label>
-	  <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
-	  <label>Content</label>
-	  <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
-	  <label>Photo Url</label>
-	  <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
-	  <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
-	  <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
-	</form>
+        <form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
+          <label>Title</label>
+          <input type="text" name="title" ng-model="grumblesCtrl.title">
+          <label>Author Name</label>
+          <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
+          <label>Content</label>
+          <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
+          <label>Photo Url</label>
+          <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+          <!-- why in this case did you use ng-click, but used ng-submit on the form earlier? -->
+          <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
+          <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
+        </form>
+
         <form class="commentForm">
           <label>Author Name:</label>
           <input type="text" name="authorName">
@@ -60,7 +69,7 @@
     </div>
   </div>
 
-
+  <!-- can these templates be removed? -->
   <script id="grumbleFormTemplate" type="text/x-handlebars-template">
     <form class="grumbleForm">
       <input type="text" name="title" value="{{ title }}">
