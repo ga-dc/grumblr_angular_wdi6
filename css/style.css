@@ -3,11 +3,24 @@
 }
 
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
   max-width: 800px;
   margin: auto;
-  padding: 1em;
-  padding-top: 0;
+}
+
+button {
+  border: 2px solid #000;
+  border-radius: 5px;
+  display: inline-block;
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  margin-top: 1em;
+  padding: .25em .5em .25em .5em;
+  background-color: #bada55;
+}
+
+fieldset {
+  border: none;
 }
 
 input,
@@ -16,14 +29,35 @@ textarea{
   width: 100%;
 }
 
+form {
+  margin-top: 1em;
+  border: 1px dashed #ddd;
+  padding: 1em 0 1em 0;
+  width: 50%;
+}
+
+h1, span {
+  font-family: 'Lobster', Georgia, Times, serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+
+li {
+  list-style: none;
+}
+
 .comment {
   border: 1px solid black;
-  padding: 1em;
+  padding: .5em;
   margin: 1em;
 }
 
 .delete{
   cursor: pointer;
+  color: tomato;
 }
 
 img{
