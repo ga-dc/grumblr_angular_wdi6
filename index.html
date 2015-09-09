@@ -23,6 +23,7 @@
       <input type="text" ng-model = "grumblesCtrl.data.photoUrl">
       <input type="submit">
     </form>
+
     <div ng-repeat="grumble in grumblesCtrl.grumbles">
       <h2>{{grumble.title}}</h2>
       <span>Post by: {{grumble.authorName}}</span>
@@ -31,16 +32,25 @@
       <button ng-click = "grumblesCtrl.currentGrumble( $index ); editGrumble = !editGrumble">Edit Grumble</button>
       <form ng-show = "editGrumble" ng-submit = "grumblesCtrl.updateGrumble( $index, grumblesCtrl.updatedData )">
         <label> Title: </label>
-        <input type="text" ng-model = "grumblesCtrl.updatedData.title">
+          <input type="text" ng-model = "grumblesCtrl.updatedData.title">
         <label> Author: </label>
-        <input type="text" ng-model = "grumblesCtrl.updatedData.authorName">
+          <input type="text" ng-model = "grumblesCtrl.updatedData.authorName">
         <label> Content: </label>
-        <textarea name="content" cols="30" rows="10" ng-model = "grumblesCtrl.updatedData.content" ></textarea>
+          <textarea name="content" cols="30" rows="10" ng-model = "grumblesCtrl.updatedData.content" ></textarea>
         <label>Photo URL: </label>
-        <input type="text" ng-model = "grumblesCtrl.updatedData.photoUrl" >
+          <input type="text" ng-model = "grumblesCtrl.updatedData.photoUrl" >
         <input type="submit">
       </form>
       <button type ="submit" ng-click = "grumblesCtrl.deleteGrumble($index)">Delete Grumble</button>
+      <div ng-repeat="comment in grumble.comments">
+        <p>Comment: {{$index}}-{{comment}}</p>
+        <form ng-show = "editComment" ng-submit = "grumblesCtrl.updateComment($parent.$index, $index)">
+          <label> Comment: </label>
+          <input type="text" ng-model = "grumblesCtrl.updatedComment">
+          <input type="submit">
+        </form>
+        <button ng-click = "grumblesCtrl.currentComment($parent.$index, $index); editComment = !editComment">Edit Comment</button>
+      </div>
     </div>
   </div>
 </body>
