@@ -21,7 +21,7 @@
       this.reset()
     }
     this.edit = function(index){
-      var grumble = this.grumbles[index] 
+      var grumble = this.grumbles[index]
       this.title = grumble.title
       this.authorName = grumble.authorName
       this.photoUrl = grumble.photoUrl
@@ -40,5 +40,16 @@
       this.formIsVisible = this.formIsVisible ? false : true
       this.reset()
     }
+  })
+  .controller('commentsController', function(){
+    this.comment = {
+      content: "",
+      author: ""
+    };
+    this.create = function(grumble){
+      var commentCopy = angular.copy(this.comment); //This doesn't feel right
+      (grumble.comments? grumble.comments.push(commentCopy) : grumble.comments = [commentCopy])
+    }
+
   });
 })();
