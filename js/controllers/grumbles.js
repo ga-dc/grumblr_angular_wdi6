@@ -89,4 +89,13 @@
                 this.reset()
             }
         });
+    app.controller('commentsController', function() {
+
+        this.create = function(grumble) {
+            grumble.comments.unshift({
+                content: grumble.newCommentContent
+            });
+            grumble.newCommentContent = "";
+        }
+    })
 })();
