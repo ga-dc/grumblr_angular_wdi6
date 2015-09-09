@@ -54,11 +54,15 @@
           <input type="text" name="authorName" ng-model="grumblesCtrl.commentAuthorName">
           <label>Content:</label>
           <input type="text" name="content" ng-model="grumblesCtrl.commentContent">
-          <button ng-click="grumblesCtrl.addComment($index)">Submit</button>
+          <button ng-show="grumblesCtrl.selectedComment == null" ng-click="grumblesCtrl.addComment($index)">Submit</button>
+          <button ng-show="grumblesCtrl.selectedComment != null" ng-click="grumblesCtrl.updateComment($index)">Update</button>
+
         </form>
         <div class="comments" ng-repeat="comment in grumble.comments">
           <p>{{comment.content}}</p>
           <p>Posted by: {{comment.authorName}}</p>
+          <button ng-click="grumblesCtrl.editComment($parent.$index, $index)">Edit Comment</button>
+          <button ng-click="grumblesCtrl.deleteComment($parent.$index, $index)">Delete Comment</button>
         </div>
       </div>
     </div>
