@@ -21,7 +21,7 @@
       this.reset()
     }
     this.edit = function(index){
-      var grumble = this.grumbles[index] 
+      var grumble = this.grumbles[index]
       this.title = grumble.title
       this.authorName = grumble.authorName
       this.photoUrl = grumble.photoUrl
@@ -39,6 +39,22 @@
     this.toggleForm = function(){
       this.formIsVisible = this.formIsVisible ? false : true
       this.reset()
+    }
+    this.createComment = function(index){
+      var comment = {};
+      comment.commentBody = this.newCommentBody;
+      comment.commentAuthor = this.newCommentAuthor;
+      this.grumbles[index].comments.unshift(comment);
+    };
+    this.editComment = function(parent, index){
+      comment = this.grumbles[parent].comments[index];
+      this.commentBody = comment.commentBody;
+    };
+    this.updateComment = function(parent, index){
+      this.grumbles[parent].comments[index].commentBody = this.commentBody;
+    };
+    this.deleteComment = function(parent, index){
+      this.grumbles[parent].comments.splice(index, 1);
     }
   });
 })();

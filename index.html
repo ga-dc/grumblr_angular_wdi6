@@ -25,39 +25,49 @@
         <button class="new">New Grumble</button>
       </form>
     </div>
-    <div class="grumbles" ng-repeat="grumble in grumblesCtrl.grumbles">
-      <div class="grumble">
-        <div ng-show="!editGrumble">
-          <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2>
-          by: {{ grumble.authorName }}
-          <p>
-            {{ grumble.content }}
-          </p>
-          <img ng-src="{{ grumble.photoUrl }}" alt="">
-        </div>
-        <button class="edit" ng-click="grumblesCtrl.edit($index); editGrumble = !editGrumble">Edit Grumble</button>
-        <form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
-          <label>Title</label>
-          <input type="text" name="title" ng-model="grumblesCtrl.title">
-          <label>Author Name</label>
-          <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
-          <label>Content</label>
-          <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
-          <label>Photo Url</label>
-          <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
-          <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
-          <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
+    <div class="grumble" ng-repeat="grumble in grumblesCtrl.grumbles">
+      <div ng-show="!editGrumble">
+        <h1>{{grumble.title}}</h1>
+        <h2>{{grumble.author}}</h2>
+        <p>{{grumble.content}}</p>
+        <img ng-src="{{grumble.photoUrl}}"/>
+        <button ng-click="editGrumble = !editGrumble; grumblesCtrl.edit($index)" ng-show="!editGrumble">Edit Grumble</button>
+        <ul>
+          <li ng-repeat="comment in grumble.comments">
+            <p ng-show="!editComment">{{comment.author}} says "{{comment.commentBody}}"</p>
+            <form ng-show="editComment">
+              <label>Comment: </label>
+              <input type="text" name="commentBody" ng-model="grumblesCtrl.commentBody">
+            </form>
+            <button ng-click="editComment = !editComment; grumblesCtrl.editComment($parent.$index, $index)" ng-show="!editComment">Edit Comment</button>
+            <button ng-show="editComment" ng-click="editComment = !editComment; grumblesCtrl.updateComment($parent.$index, $index)">Update Comment</button>
+            <button ng-show="editComment" ng-click="editComment = !editComment; grumblesCtrl.deleteComment($parent.$index, $index)">Delete Comment</button>
+            <button ng-show="editComment" ng-click="editComment = !editComment">Cancel Edit</button>
+          </li>
+        </ul>
+        <form ng-show="newComment" ng-submit="grumblesCtrl.createComment($index)">
+          <label>Comment: </label>
+          <input type="text" name="commentBody" ng-model="grumblesCtrl.newCommentBody">
+          <label>Author: </label>
+          <input type="text" name="commentAuthor" ng-model="grumblesCtrl.newCommentAuthor">
+          <input type="submit" ng-click="newComment = !newComment">
         </form>
-
-        <form class="commentForm">
-          <label>Author Name:</label>
-          <input type="text" name="authorName">
-          <label>Content:</label>
-          <input type="text" name="content">
-          <button>Submit</button>
-        </form>
-        <div class="comments"></div>
+            <button ng-click="newComment = !newComment" ng-show="!newComment">New Comment</button>
+            <button ng-click="newComment = !newComment" ng-show="newComment">Cancel Comment</button>
       </div>
+      <form ng-show="editGrumble">
+        <label>Title:</label>
+        <input type="text" name="title" ng-model="grumblesCtrl.title">
+        <label>Author:</label>
+        <input type="text" name="author" ng-model="grumblesCtrl.author">
+        <label>Content:</label>
+        <input type="text" name="content" ng-model="grumblesCtrl.content">
+        <label>Photo URL:</label>
+        <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+        <button class="update" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Update Grumble</button>
+        <button class="cancel" ng-click="editGrumble = !editGrumble">Cancel Edit</button>
+        <button class="delete" ng-click="grumblesCtrl.delete($index); editGrumble = !editGrumble">Delete Grumble</button>
+      </form>
     </div>
   </div>
 </body>
