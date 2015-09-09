@@ -49,14 +49,16 @@
           <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
         </form>
 
-        <form class="commentForm">
-          <label>Author Name:</label>
-          <input type="text" name="authorName">
-          <label>Content:</label>
-          <input type="text" name="content">
+        <form class="commentForm" ng-submit="commentsCtrl.create">
+          <label>Comment Author:</label>
+          <input type="text" name="commentAuthor">
+          <labelComment>Comment Content:</label>
+          <input type="text" name="commentContent">
           <button>Submit</button>
         </form>
-        <div class="comments"></div>
+        <div class="comments">
+          <p>{{grumble.comment}}</p>
+        </div>
       </div>
     </div>
   </div>
