@@ -1,0 +1,28 @@
+body {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  padding: 0 15% 0 15%;
+}
+
+h1 {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 3em;
+}
+
+fieldset {
+  border: none;
+}
+
+form {
+  margin-top: 1em;
+  border: 1px dashed #ddd;
+  padding: 1em 0 1em 0;
+  width: 50%;
+}
+
+button, input[type="submit"] {
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: inline-block;
+  padding: .25em .5em .25em .5em;
+  background-color: #bada55;
+}
