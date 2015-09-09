@@ -3,6 +3,7 @@
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="js/controllers/grumbles.js"></script>
+  <script src="js/controllers/comments.js"></script>
   <script src="js/app.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -36,6 +37,7 @@
           <img ng-src="{{ grumble.photoUrl }}" alt="">
         </div>
         <button class="edit" ng-click="grumblesCtrl.edit($index); editGrumble = !editGrumble">Edit Grumble</button>
+
         <form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
           <label>Title</label>
           <input type="text" name="title" ng-model="grumblesCtrl.title">
@@ -49,13 +51,21 @@
           <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
         </form>
 
-        <form class="commentForm">
-          <label>Author Name:</label>
-          <input type="text" name="authorName">
-          <label>Content:</label>
-          <input type="text" name="content">
-          <button>Submit</button>
+        <!--        <div ng-controller="commentsController as commentsCtrl"> -->
+          <form class="commentForm" name="commentsCtrl.commentForm">
+            <label>Author Name:</label>
+            <input type="text" name="authorName" ng-model="commentCtrl.authorName">
+            <label>Content:</label>
+            <input type="text" name="content" ng-model="commentCtrl.content">
+            <button>Submit</button>
         </form>
+        <!--         </div> -->
+
+        <div class="comments" ng-repeat="comment in commentsCtrl.comments">
+          <h2>{{comment.authorName}}</h2>
+          <p>{{comment.content}}</p>
+        </div>
+
         <div class="comments"></div>
       </div>
     </div>
