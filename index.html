@@ -42,6 +42,7 @@
         <input type="submit">
       </form>
       <button type ="submit" ng-click = "grumblesCtrl.deleteGrumble($index)">Delete Grumble</button>
+
       <div ng-repeat="comment in grumble.comments">
         <p>Comment: {{$index}}-{{comment}}</p>
         <form ng-show = "editComment" ng-submit = "grumblesCtrl.updateComment($parent.$index, $index)">
@@ -50,7 +51,13 @@
           <input type="submit">
         </form>
         <button ng-click = "grumblesCtrl.currentComment($parent.$index, $index); editComment = !editComment">Edit Comment</button>
+        <button ng-click = "grumble.toggleCommentForm()"> New Comment</button>
+          <form ng-show = "grumble.commentFormVisible">
+            <label> New Comment</label>
+            <input type="text">
+          </form>
       </div>
+
     </div>
   </div>
 </body>

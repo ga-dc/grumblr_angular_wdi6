@@ -65,10 +65,17 @@ app.controller("grumblesController", function(){
   };
 
   this.updateComment = function(grumbleIndex, commentIndex){
-    console.log(this.updatedComment)
     this.grumbles[grumbleIndex].comments[commentIndex] = this.updatedComment;
   };
   this.currentComment = function(grumbleIndex, commentIndex){
     this.updatedComment = this.grumbles[grumbleIndex].comments[commentIndex];
-  }
+  };
+    this.commentFormVisible = false;
+    this.toggleCommentForm = function(){
+      if(this.commentFormVisible === false){
+        this.commentFormVisible = true;
+      } else {
+        this.commentFormVisible = false;
+      }
+    }
 });
