@@ -60,11 +60,19 @@
           </form>
           <ul class="comments">
             <li ng-repeat="comment in grumble.comments">
-              <blockquote>
+              <blockquote ng-hide="editComment">
                 {{comment.content}} -- <small>{{comment.author}}</small>
+                <span ng-click="commentsCtrl.delete(grumble, $index)">X</span>
+                <button ng-click="editComment = !editComment">Edit</button>
+                {{editComment}}
               </blockquote>
+              <form ng-show="editComment" ng-submit="commentsCtrl.update(grumble, $index)">
+                <input ng-model="commentsCtrl.comment.author">
+                <input ng-model="commentsCtrl.comment.content">
+                <button>Submit</button>
+              </form>
             </li>
-            <li ng-if="!grumble.comments">
+            <li ng-if="!(grumble.comments && grumble.comments.length)">
               <strong>Be the first to comment!</strong>
             </li>
           </ul>
