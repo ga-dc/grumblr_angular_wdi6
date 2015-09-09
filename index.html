@@ -35,11 +35,9 @@
           </p>
           <img ng-src="{{ grumble.photoUrl }}" alt="">
         </div>
-        <div class="comment" ng-repeat="comment in grumble.comment">
-          <p>{{comment.commentAuthor}} commented: {{comment.commentBody}}</p>
-        </div>
 
         <button class="edit" ng-click="grumblesCtrl.edit($index); editGrumble = !editGrumble">Edit Grumble</button>
+
         <form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
           <label>Title</label>
           <input type="text" name="title" ng-model="grumblesCtrl.title">
@@ -52,14 +50,24 @@
           <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
           <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
         </form>
-        <form class="commentForm">
-          <label>Author Name:</label>
-          <input type="text" name="authorName">
-          <label>Content:</label>
-          <input type="text" name="content">
-          <button>Submit</button>
-        </form>
-        <div class="comments"></div>
+
+          <form class=>
+
+          </form>
+        </div>
+
+        <div class="comment" ng-repeat="comment in grumble.comments">
+          <p>{{comment.commentAuthor}} commented: {{comment.commentBody}}</p>
+        </div>
+
+        <div ng-controller="commentsController as commentsCtrl">
+            <form class="commentForm" ng-submit="commentsCtrl.create (grumble)">
+              <label>Commenter Name:</label>
+              <input type="text" name="commentAuthor" ng-model="grumble.newCommentAuthor">
+              <label>Comment:</label>
+              <input type="text" name="commentBody" ng-model="grumble.newCommentBody">
+              <button>Submit</button>
+            </form>
       </div>
     </div>
   </div>
