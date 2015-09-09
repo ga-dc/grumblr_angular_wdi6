@@ -1,0 +1,9 @@
+<grumble-show></grumble-show>
+<ul>
+  <li data-ng-repeat="comment in vm.comments">
+    <comment-show data-comment="comment"></comment-show>
+  </li>
+  <li>
+    <comment-save data-grumble="vm.grumble"></comment-save>
+  </li>
+</ul>
