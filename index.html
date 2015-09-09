@@ -11,23 +11,17 @@
 
 
   <div ng-controller="grumblesController as grumblesCtrl">
-
     <div id="createGrumble">
       <a href="#" ng-click="grumblesCtrl.toggleForm()">New Grumble</a>
-
       <form ng-show="grumblesCtrl.formIsVisible" name="grumblesCtrl.grumbleForm" class='grumbleForm' ng-submit="grumblesCtrl.create()">
         <label>Title</label>
         <input type="text" name="title" ng-model="grumblesCtrl.title">
-
         <label>Author Name</label>
         <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
-
         <label>Content</label>
         <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
-
         <label>Photo Url</label>
         <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
-
         <button class="new">New Grumble</button>
       </form>
     </div>
@@ -45,7 +39,6 @@
         <form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
           <label>Title</label>
           <input type="text" name="title" ng-model="grumblesCtrl.title">
-
           <label>Author Name</label>
           <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
           <label>Content</label>
@@ -56,22 +49,14 @@
           <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
         </form>
 
-        <div ng-controller="commentsController as commentsCtrl">
-          <form class="commentForm" ng-submit="commentsCtrl.create(grumble)">
-            <label>Content:</label>
-            <input type="text" name="content" ng-model="grumble.newCommentContent">
-            <button>Add a Comment</button>
-          </form>
-
-        </div>
-        <div class="comments">
-          <!-- I don't completely get newCommentContent works. Can you explain it please? -->
-          <h2>Comments</h2>
-          <p>{{grumble.newCommentContent}}</p>
-          <div ng-repeat="comment in grumble.comments">
-            <p>Id: {{comment.id}} - {{comment.content}}</p>
-          </div>
-        </div>
+        <form class="commentForm">
+          <label>Author Name:</label>
+          <input type="text" name="authorName">
+          <label>Content:</label>
+          <input type="text" name="content">
+          <button>Submit</button>
+        </form>
+        <div class="comments"></div>
       </div>
     </div>
   </div>
