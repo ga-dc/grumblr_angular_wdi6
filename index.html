@@ -65,7 +65,13 @@
                         <p>{{comment.content}}</p>
                     </div>
 
-                    <div class="comments"></div>
+                    <div class="comments">
+                        <h3>Comments</h3>
+                        <p>{{grumble.newCommentContent}}</p>
+                        <div ng-repeat="comment in grumble.comments">
+                            <p>{{comment.id}}{{comment.content}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
