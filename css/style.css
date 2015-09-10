@@ -29,3 +29,14 @@ textarea{
 img{
   max-width:100%;
 }
+
+.comments {
+    border: 1px solid black;
+    background-color: #FCFCFC;
+    padding: 1em;
+    margin: 1em 0em;
+}
+
+h3.ng-binding, h5.ng-binding {
+    display: inline-block;
+}

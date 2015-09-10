@@ -19,6 +19,7 @@
     </form>
 
     <div class="comments" ng-repeat="comment in grumbleCtrl.grumble.comments"> <!-- ng-repeat is great because each item has it's own scope -->
+      <h3>{{comment.authorName}} | </h3> <h5>{{comment.created_at}}</h5>
       <p>{{comment.content}}</p>
     </div>
 
