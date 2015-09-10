@@ -1,21 +1,33 @@
 <div>
   <div class="grumble">
     <div>
-      <h2><a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}">{{ grumbleCtrl.grumble.title }}</a> <span class='delete' ng-click="grumbleCtrl.delete(grumbleCtrl.grumble.id)">(X)</span></h2>
+      <h2>
+        <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}">{{ grumbleCtrl.grumble.title }}</a>
+        <h2 class='delete' ng-click="grumbleCtrl.delete(grumbleCtrl.grumble.id)"><button>Delete</button></span></h2>
+        <h2><a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit"><button>Edit Grumble</button></a></h2>
+
+      </h2>
       by: {{ grumbleCtrl.grumble.authorName }}
       <p>
         {{ grumbleCtrl.grumble.content }}
       </p>
       <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="">
     </div>
-    <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
-    <form class="commentForm">
+
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment()">
       <label>Author Name:</label>
-      <input type="text" name="authorName">
+      <input type="text" name="authorName" ng-model="grumbleCtrl.comment.authorName">
       <label>Content:</label>
-      <input type="text" name="content">
+      <input type="text" name="content" ng-model="grumbleCtrl.comment.content">
       <button>Submit</button>
     </form>
-    <div class="comments"></div>
+    <div class="comments" ng-repeat="comment in grumbleCtrl.comments">
+      <div class="comment">
+        <div>
+          <h2>{{ comment.authorName }}<span ng-click="grumbleCtrl.deleteComment(comment.id)"><button>Delete</button></span></h2>
+          <h2>{{ comment.content }}</h2>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

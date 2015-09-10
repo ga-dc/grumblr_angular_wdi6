@@ -8,7 +8,7 @@
     <textarea name="content" ng-model="grumbleCtrl.grumble.content">new grumble content</textarea>
     <label>Photo Url</label>
     <input type="text" name="photoUrl" ng-model="grumbleCtrl.grumble.photoUrl">
-    <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}">&larr; Back</a>
+    <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}"><button>&larr; Back</button></a>
     <button class="new" ng-click="grumbleCtrl.update()">Save</button>
   </form>
 </div>
