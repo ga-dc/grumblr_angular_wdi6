@@ -1,14 +1,14 @@
 <div class="well">
   <div class="row">
     <div class="col-sm-4">
-      <a data-ng-href="../#/grumbles/{{grumble.$id}}">
+      <a data-ng-href="./#/grumbles/{{grumble.$id}}">
         <img class="img-responsive img-rounded" data-ng-src="{{grumble.photoUrl}}" alt="{{grumble.title}}" />
       </a>
     </div>
     <div class="col-sm-8">
-      <h2><a data-ng-href="../#/grumbles/{{grumble.$id}}">{{grumble.title}}</a></h2>
+      <h2><a data-ng-href="./#/grumbles/{{grumble.$id}}">{{grumble.title}}</a></h2>
       <p data-ng-if="showButtons">
-        <a class="btn btn-warning btn-xs" data-ng-href="../#/grumbles/{{grumble.$id}}/edit">Edit</a>
+        <a class="btn btn-warning btn-xs" data-ng-href="./#/grumbles/{{grumble.$id}}/edit">Edit</a>
         <a class="btn btn-danger btn-xs" data-ng-click="grumble.$destroy()">Delete</a>
       </p>
       <p>by: {{grumble.authorName}}</p>
