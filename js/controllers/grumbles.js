@@ -1,6 +1,6 @@
 (function() {
-  angular.module('grumbleControllers', [])
-  .controller('grumblesController', function() {
+  app = angular.module('grumbleControllers', [])
+  app.controller('grumblesController', function() {
     this.grumbles = [
     {comments: [{author: "Robert", content: "My man!"}, {author: "Billy", content: "My man!"}], "id":667,"authorName":"Jesse","content":"Only those who attempt the impossible can achieve the absurd.","title":"29 hipster kanye quotes that people born after 1990 wil never understand","photoUrl":"https://splashbase.s3.amazonaws.com/getrefe/regular/tumblr_n6ni6khmfG1slhhf0o2_1280.jpg","created_at":"2015-09-01T14:10:07.845Z","updated_at":"2015-09-01T14:10:07.845Z"
     },
@@ -54,4 +54,13 @@
       this.reset()
     }
   });
+
+  app.controller('commentsController', function() {
+    this.create = function(grumble) {
+      grumble.comments.unshift( {author: grumble.newCommentAuthor, content: grumble.newCommentContent} );
+      grumble.newCommentAuthor = "";
+      grumble.newCommentContent = "";
+    }
+
+  })
 })();

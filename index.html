@@ -1,4 +1,5 @@
 <html ng-app="grumblr">
+
 <head>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
@@ -6,10 +7,9 @@
   <script src="js/app.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <h1>Grumblr</h1>
-
-
   <div ng-controller="grumblesController as grumblesCtrl">
     <div id="createGrumble">
       <a href="#" ng-click="grumblesCtrl.toggleForm()">New Grumble</a>
@@ -28,8 +28,7 @@
     <div class="grumbles" ng-repeat="grumble in grumblesCtrl.grumbles">
       <div class="grumble">
         <div ng-show="!editGrumble">
-          <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2>
-          by: {{ grumble.authorName }}
+          <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2> by: {{ grumble.authorName }}
           <p>
             {{ grumble.content }}
           </p>
@@ -48,25 +47,26 @@
           <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
           <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
         </form>
-
-        <form class="commentForm">
-          <label>Author Name:</label>
-          <input type="text" name="authorName">
-          <label>Content:</label>
-          <input type="text" name="content">
-          <button>Submit</button>
-        </form>
+        <div ng-controller="commentsController as commentsCtrl">
+          <form class="commentForm" ng-submit="commentsCtrl.create(grumble)">
+            <label>Author Name:</label>
+            <input type="text" name="authorName" ng-model="grumble.newCommentAuthor">
+            <label>Content:</label>
+            <input type="text" name="content" ng-model="grumble.newCommentContent">
+            <button>Submit</button>
+          </form>
+        </div>
         <div class="comments">
           <h2>Comments</h2>
           <div ng-repeat="comment in grumble.comments">
             <p>{{ comment.content }} - {{ comment.author }}</p>
           </div>
-
           <center>- - - - - - - - - - - - - - - - - - - -</center>
-
         </div>
       </div>
     </div>
   </div>
 </body>
+
 </html>
+
