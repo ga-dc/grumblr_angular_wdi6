@@ -9,11 +9,17 @@
       <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="">
     </div>
     <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
-    <form class="commentForm">
+
+    <div ng-repeat="comment in grumbleCtrl.comments">
+    <h2>{{comment.authorName}}<span class='delete' ng-click="grumbleCtrl.deleteComment(comment.id)">(X)</span></h2>
+      <p>{{comment.content}}</p>
+    </div>
+
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment()">
       <label>Author Name:</label>
-      <input type="text" name="authorName">
+      <input type="text" name="authorName" ng-model="grumbleCtrl.comments.authorName">
       <label>Content:</label>
-      <input type="text" name="content">
+      <input type="text" name="content" ng-model="grumbleCtrl.comments.content">
       <button>Submit</button>
     </form>
     <div class="comments"></div>
