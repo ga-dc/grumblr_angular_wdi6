@@ -14,16 +14,16 @@
       }
   }])
 
-  app.controller('grumbleController',['$routeParams', '$location', 'Grumble', function($routeParams, $location, Grumble){
-    this.grumble = Grumble.get({id: $routeParams.id})
+  app.controller('grumbleController',['$routeParams', '$location', 'Grumble', 'Comment', function($routeParams, $location, Grumble, Comment){
+    this.grumble = Grumble.get({id: $routeParams.id}, function(grumble){
+        grumble.comments = Comment.query({grumble_id: grumble.id})
+
+    })
     this.delete = function(){
         Grumble.delete(this.grumble, function(){
             $location.path("/grumbles")
         })
     }
-
-    // fetch Grumble comments here, in this controller
-
 
   }])
 
