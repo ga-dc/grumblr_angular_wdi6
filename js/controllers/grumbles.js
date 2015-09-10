@@ -21,7 +21,7 @@
       this.reset()
     }
     this.edit = function(index){
-      var grumble = this.grumbles[index] 
+      var grumble = this.grumbles[index]
       this.title = grumble.title
       this.authorName = grumble.authorName
       this.photoUrl = grumble.photoUrl
@@ -40,5 +40,15 @@
       this.formIsVisible = this.formIsVisible ? false : true
       this.reset()
     }
+
+    app.controller( 'commentsController', function(){
+      this.create = function ( grumble ){
+        grumble.comments.unshift({
+          content: grumble.newCommentContent
+        });
+        grumble.newCommentContent = "";
+      }
+    })
+
   });
 })();
