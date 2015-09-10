@@ -7,8 +7,23 @@
   }]);
 
   // show controller (handles delete link on show page)
-  grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', function($routeParams, $location, $http, Grumble){
-    this.grumble = Grumble.get({id: $routeParams.id});
+  grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', 'Comment', function($routeParams, $location, $http, Grumble, Comment){
+    var self = this;
+    this.grumble = Grumble.get({id: $routeParams.id}, function(grumble){
+      self.comments = Comment.query({grumble_id: grumble.id})
+    console.log(self.comments);
+    });
+
+    this.createComment = function( grumble ) {
+      this.grumble = Grumble.get({id: $routeParams.id}, function(grumble){
+        self.comments = Comment.query({grumble_id: self.grumble.id})
+
+        Comment.save(self.comments);
+
+      })
+    }
+
+
     this.delete = function(id){
       Grumble.delete({id: id}, function(){
 	$location.path("/grumbles")
@@ -23,7 +38,7 @@
         $location.path("/grumbles/" + grumble.id);
       })
     }
-  }])
+  }]);
 
   // edit form controller (handles update)
   grumbleControllers.controller('editGrumbleController', ["$location","$routeParams", 'Grumble', function($location, $routeParams, Grumble){
