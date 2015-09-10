@@ -26,10 +26,28 @@
   // new form controller (handles creation)
   grumbleControllers.controller('newGrumbleController', ["$location", 'Grumble', function($location, Grumble){
     this.create = function(){
-      var self = this
-      Grumble.save(this.grumble, function(id) {
-        $location.path("/grumbles/" + id);
+      this.grumbles.unshift({
+        title: this.title,
+        authorName: this.authorName,
+        content: this.content,
+        photoUrl: this.photoUrl,
+        comment: [{commentAuthor: "", commentContent: ""}]
       })
+      this.reset()
+    }
+    this.edit = function(index){
+      var grumble = this.grumbles[index]
+      this.title = grumble.title
+      this.authorName = grumble.authorName
+      this.photoUrl = grumble.photoUrl
+      this.content = grumble.content
+    }
+    this.update = function(index){
+      var grumble = this.grumbles[index]
+      grumble.title = this.title
+      grumble.authorName = this.authorName
+      grumble.photoUrl = this.photoUrl
+      grumble.content = this.content
     }
   }])
 
