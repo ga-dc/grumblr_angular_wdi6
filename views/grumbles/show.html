@@ -18,7 +18,7 @@
       <button>Submit</button>
     </form>
 
-    <div class="comments" ng-repeat="comment in grumblesCtrl.grumbles"> <!-- ng-repeat is great because each item has it's own scope -->>
+    <div class="comments" ng-repeat="comment in grumbleCtrl.grumble.comments"> <!-- ng-repeat is great because each item has it's own scope -->
       <p>{{comment.content}}</p>
     </div>
 
