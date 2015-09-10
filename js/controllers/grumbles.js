@@ -9,9 +9,10 @@
   // show controller (handles delete link on show page)
   grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', function($routeParams, $location, $http, Grumble){
     this.grumble = Grumble.get({id: $routeParams.id});
+    Comment.query({grumble_id: $routeParams.id})
     this.delete = function(id){
       Grumble.delete({id: id}, function(){
-	$location.path("/grumbles")
+	       $location.path("/grumbles")
       });
     }
   }]);
