@@ -1,0 +1,11 @@
+<div class="grumble">
+    <h2>
+      <a ng-href="#/grumbles/{{grumbleCtrl.grumble.id}}">{{ grumbleCtrl.grumble.title }}</a>
+      <span ng-click="grumbleCtrl.delete()">(x)</span>
+    </h2>
+    by: {{ grumbleCtrl.grumble.authorName }}
+    <p>
+      {{ grumbleCtrl.grumble.content }}
+    </p>
+    <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="image of {{grumbleCtrl.grumble.title}}">
+</div>

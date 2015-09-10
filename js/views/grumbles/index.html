@@ -1,6 +1,6 @@
 <div class='grumbles' ng-repeat='grumble in grumblesCtrl.grumbles'>
   <div class="grumble">
-      <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete(grumble)">(X)</span></h2>
+      <h2><a ng-href="#/grumbles/{{grumble.id}}">{{ grumble.title }}</a></h2>
       by: {{ grumble.authorName }}
       <p>
         {{ grumble.content }}
