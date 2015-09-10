@@ -39,7 +39,7 @@
         });
       },
       get: function (grumble, callback) {
-        var found = $firebaseObject(grumblesRef.child(grumble.$id));
+        var found = grumbles.$getRecord(grumble.$id);
         // support optional callback
         if(typeof callback == "function") {
           callback(found);
