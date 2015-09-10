@@ -11,6 +11,7 @@
     <div class="comment" ng-repeat="comment in grumbleCtrl.grumble.comments">
         {{  comment.content  }}
         <p>By: {{comment.authorName}}</p>
+        <button ng-click="grumbleCtrl.deleteComment(comment, $index)">Delete</button>
     </div>
     <form class="commentForm" ng-submit="grumbleCtrl.createComment(grumbleCtrl.comment)">
         <label>Author Name:</label>

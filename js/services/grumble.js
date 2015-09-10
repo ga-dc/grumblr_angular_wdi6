@@ -10,6 +10,3 @@
     });
   }]);
 })();
-
-
-// Comment.query({grumble_id: _____})

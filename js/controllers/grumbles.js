@@ -30,6 +30,15 @@
             self.comment = {}
         })
     }
+    this.deleteComment = function(comment, index){
+        var self=this
+        console.log(index);
+        Comment.delete({grumble_id: self.grumble.id, id: comment.id}, function(index){
+            // console.log(comment);
+            self.grumble.comments.splice(index, 1);
+            // $location.path("/grumbles/" + self.grumble.id)
+        })
+    }
   }])
 
   app.controller('updateController', ['$routeParams', '$location', 'Grumble', function($routeParams, $location, Grumble){
