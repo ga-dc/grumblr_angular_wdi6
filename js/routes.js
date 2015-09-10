@@ -31,4 +31,17 @@
   ])
 
 
-})();
+ })();
+// 
+// (function(){
+//  var router = angular.module('commentRouter', []);
+//  router.config(['$routeProvider',
+//  function($routeProvider){
+//    $routeProvider.
+//    when("/grumbles/:grumble_id/comments/:id",{
+//      templateUrl: 'js/views/grumbles/index.html',
+//
+//
+//    })
+//  }])
+// })()
