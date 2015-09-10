@@ -1,7 +1,8 @@
 (function() {
   app = angular.module('grumbleControllers',[]);
 
-  app.controller('grumbleController' ['$routeParams', 'Grumble', function ($routeParams, Grumble) {
+////Delete
+  app.controller('grumbleController', ['$routeParams', 'Grumble', function ($routeParams, Grumble) {
     this.grumble = Grumble.get({id: $routeParams.id})
     console.log("here", this)
     this.delete = function () {
@@ -12,8 +13,6 @@
       });
     };
   }]);
-
-
 
 
   app.controller('grumblesController', ['Grumble', function(Grumble) {
@@ -42,34 +41,29 @@
         self.grumbles = Grumble.query()
       })
     }
-      this.grumbles.unshift({
-        title: this.title,
-        authorName: this.authorName,
-        content: this.content,
-        photoUrl: this.photoUrl
-      })
-      this.reset()
-    this.edit = function(index){
-      var grumble = this.grumbles[index]
-      this.title = grumble.title
-      this.authorName = grumble.authorName
-      this.photoUrl = grumble.photoUrl
-      this.content = grumble.content
-    }
-    this.update = function(index){
-      var grumble = this.grumbles[index]
-      grumble.title = this.title
-      grumble.authorName = this.authorName
-      grumble.photoUrl = this.photoUrl
-      grumble.content = this.content
-    this.formIsVisible = false
-    }
+
+
     this.showGrumble = true
     this.toggleForm = function(){
       this.formIsVisible = this.formIsVisible ? false : true
     }
   }]);
-
+    //////New
+  app.controller('newGrumbleController', ['Grumble', '$location', function (Grumble, $location) {
+    this.create = function () {
+      Grumble.save(this.grumble, function (grumble) {
+        $location.path("/grumbles/" + grumble.id)
+      })
+    }
+  }])
+//////edit
+  app.controller('editGrumbleController', ["$location", "$routeParams", 'Grumble', function ($location, $routeParams, Grumble) {
+    this.grumble = Grumble.get({id: $routeParams.id})
+    this.update = function () {
+      this.grumble.$update({id: this.grumble.id});
+      $location.path("/grumbles/" + this.grumble.id)
+    }
+  }])
 
   app.controller( 'commentsController', function(){
 
