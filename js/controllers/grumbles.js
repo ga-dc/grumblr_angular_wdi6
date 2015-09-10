@@ -23,11 +23,12 @@
         authorName: this.authorName,
         content: this.content
       };
-      var currentComments = Comment.query({grumble_id: $routeParams.id});
-      currentComments.push(newComment);
+      //var currentComments = Comment.query({grumble_id: $routeParams.id});
+      //currentComments.push(newComment);
 
-      console.log(currentComments);
-      Comment.save(currentComments, function() {
+      //console.log(currentComments);
+      Comment.save({grumble_id: $routeParams.id}, newComment, function() {
+        location.reload();
       })
     }
   }]);
