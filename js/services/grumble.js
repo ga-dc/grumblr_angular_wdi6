@@ -2,7 +2,7 @@
   var grumbleServices = angular.module('grumbleServices', ['ngResource', 'firebase']);
 
   // Check connection (optional, mostly for instructional purposes)
-  var firebaseUrl = "https://ga-dc-wdi-grumblr.firebaseio.com";
+  var firebaseUrl = "https://wdidc.firebaseio.com";
   var connectedRef = new Firebase(firebaseUrl + "/.info/connected");
   connectedRef.on("value", function(snapshot) {
     if (snapshot.val() === true) {
