@@ -49,14 +49,22 @@
           <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
         </form>
 
-        <form class="commentForm">
-          <label>Author Name:</label>
-          <input type="text" name="authorName">
-          <label>Content:</label>
-          <input type="text" name="content">
-          <button>Submit</button>
+
+
+        <form class="commentForm" ng-submit="grumblesCtrl.comCreate( grumble )">
+          <!-- <label>Author Name:</label>
+          <input type="text" name="authorName" ng-model="grumblesCtrl.commentName"> -->
+          <label>Comment:</label>
+          <input type="text" name="content" ng-model="grumble.newCommentContent">
+          <button ng-click="grumblesCtrl.new($index)">Submit</button>
         </form>
+
         <div class="comments"></div>
+          {{ grumble.newCommentContent }}
+          <div ng-repeat="comment in grumble.comments">
+          {{ comment.content }}
+          </div>
+
       </div>
     </div>
   </div>
