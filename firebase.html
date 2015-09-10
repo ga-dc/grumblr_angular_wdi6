@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>wdidc.firebaseio.com visualizer</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+    <script>
+    var url = "https://wdidc.firebaseio.com";
+    window.onload = function(){
+      var firebase = new Firebase(url);
+      var output = document.getElementById("output");
+      var link = document.getElementById("link");
+      var data;
+
+      link.href = url;
+      link.innerHTML = url;
+
+      firebase.child("/").on("value", function(response){
+        output.innerHTML = JSON.stringify(response.val(), null, 2);
+      });
+    }
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"  integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous" />
+  </head>
+  <body class="container">
+    <pre id="output"></pre>
+    <p>The content of <a id="link" target="_blank"></a>. <a class="btn btn-default btn-sm" href="/">Back</a></p>
+  </body>
+</html>

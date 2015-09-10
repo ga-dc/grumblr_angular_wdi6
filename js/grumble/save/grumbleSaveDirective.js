@@ -10,6 +10,7 @@
   function grumbleSave($routeParams, Grumble){
     return {
       templateUrl: "js/grumble/save/grumbleSaveView.html",
+      replace: true,
       link: function(scope, element, attributes){
         scope.grumble = Grumble.new({id: $routeParams.id});
       }

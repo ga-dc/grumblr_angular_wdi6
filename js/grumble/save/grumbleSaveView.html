@@ -1,19 +1,23 @@
-<div>
-  <form>
-    <label>Title</label>
-    <input type="text" data-ng-model="grumble.title">
-    <label>Author Name</label>
-    <input type="text" data-ng-model="grumble.authorName">
-    <label>Content</label>
-    <textarea data-ng-model="grumble.content">new grumble content</textarea>
-    <label>Photo Url</label>
-    <input type="text" data-ng-model="grumble.photoUrl">
+<div class="well">
+  <div class="form-group">
+    <input class="form-control" type="text" data-ng-model="grumble.title" placeholder="Title" />
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" data-ng-model="grumble.authorName" placeholder="Author" />
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" data-ng-model="grumble.content" placeholder="Your Grumble"></textarea>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" data-ng-model="grumble.photoUrl" placeholder="Photo URL" />
+  </div>
+  <div class="form-group">
     <span data-ng-if="grumble.$id">
-      <a data-ng-href="/#/grumbles/{{grumble.$id}}">&larr; Back</a>
-      <button class="new" data-ng-click="grumble.$update()">Save</button>
+      <a class="btn btn-default" data-ng-href="/#/grumbles/{{grumble.$id}}">&larr; Back</a>
+      <button class="btn btn-primary" data-ng-click="grumble.$update()">Save</button>
     </span>
     <span data-ng-if="!grumble.$id">
-      <button class="new" data-ng-click="grumble.$create()">Create</button>
+      <button class="btn btn-primary" data-ng-click="grumble.$create()">Create</button>
     </span>
-  </form>
+  </div>
 </div>
