@@ -1,0 +1,36 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 5px;
+}
+
+body {
+  background-color: #EEE;
+  color: #333;
+}
+
+.grumble-container {
+  min-width: 20%;
+  overflow: auto;
+  color: #444;
+  border: 1px #bbb solid;
+}
+
+button {
+  background-color: #EEE;
+  color: #115577;
+  font-weight: bold;
+  border: 2px #115577 solid;
+
+  height: 50px;
+  width: 100px;
+
+  padding: auto;
+  margin: 3px;
+}
+
+input, textarea {
+  display: block;
+}
