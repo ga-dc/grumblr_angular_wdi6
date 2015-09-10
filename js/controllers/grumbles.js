@@ -11,47 +11,33 @@
     };
   }]);
 
-  app.controller('grumblesController', ['Grumble', function(Grumble) {
+  app.controller('editGrumbleController', ['$routeParams', '$location', 'Grumble', function($routeParams, $location, Grumble){
+    this.grumble = Grumble.get({id: $routeParams.id});
 
-    this.grumbles = Grumble.query();
+    this.update = function() {
+      // Grumble.update({id: this.grumble.id}, this.grumble);
 
-    this.reset = function(){
-      this.title = "";
-      this.authorName = "";
-      this.content = "";
-      this.photoUrl = "";
+      this.grumble.$update(this.grumble, function(grumble) {
+         $location.path("/grumbles/" + grumble.id);
+       });
     };
-    this.create = function(){
-      var self = this;
+  }]);
+
+  app.controller('newGrumbleController', ['$location', 'Grumble', function($location, Grumble) {
+    this.create = function() {
       Grumble.save({
         title: this.title,
         authorName: this.authorName,
         content: this.content,
         photoUrl: this.photoUrl
-      }, function(newGrumble) {
-        self.reset();
-        self.grumbles.unshift(newGrumble);
+      }, function() {
+        $location.path("/grumbles");
       });
-    };
-    this.edit = function(index){
-      var grumble = this.grumbles[index];
-      this.title = grumble.title;
-      this.authorName = grumble.authorName;
-      this.photoUrl = grumble.photoUrl;
-      this.content = grumble.content;
-    };
-    this.update = function(index){
-      var grumble = this.grumbles[index];
-      grumble.title = this.title;
-      grumble.authorName = this.authorName;
-      grumble.photoUrl = this.photoUrl;
-      grumble.content = this.content;
-    };
-    this.formIsVisible = false;
-    this.showGrumble = true;
-    this.toggleForm = function(){
-      this.formIsVisible = this.formIsVisible ? false : true;
-    };
+    }
+  }])
+
+  app.controller('grumblesController', ['Grumble', function(Grumble) {
+    this.grumbles = Grumble.query();
   }]);
 
   app.controller( 'commentsController', function(){

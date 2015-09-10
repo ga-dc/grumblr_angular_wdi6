@@ -1,0 +1,15 @@
+<form ng-submit="newGrumbleCtrl.create()">
+  <label>Title</label>
+  <input type="text" name="title" ng-model="newGrumbleCtrl.title">
+
+  <label>Author Name</label>
+  <input type="text" name="authorName" ng-model="newGrumbleCtrl.authorName">
+
+  <label>Content</label>
+  <textarea name="content" ng-model="newGrumbleCtrl.content">new grumble content</textarea>
+
+  <label>Photo Url</label>
+  <input type="text" name="photoUrl" ng-model="newGrumbleCtrl.photoUrl">
+
+  <button class="new">New Grumble</button>
+</form>

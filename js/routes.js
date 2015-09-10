@@ -1,14 +1,28 @@
 (function(){
  var router = angular.module('grumbleRouter', []);
  router.config(['$routeProvider', function($routeProvider){
-   $routeProvider.when("/grumbles",{
+   $routeProvider.
+   when("/grumbles",{
      templateUrl: 'js/views/grumbles/index.html',
      controller: 'grumblesController',
      controllerAs: 'grumblesCtrl'
-   }).when("/grumbles/:id", {
+   }).
+   when("/grumbles/new", {
+     templateUrl: 'js/views/grumbles/new.html',
+     controller: 'newGrumbleController',
+     controllerAs: 'newGrumbleCtrl'
+   }).
+   when("/grumbles/:id/edit", {
+     templateUrl: 'js/views/grumbles/edit.html',
+     controller: 'editGrumbleController',
+     controllerAs: 'editGrumbleCtrl'
+   }).
+   when("/grumbles/:id", {
      templateUrl: 'js/views/grumbles/show.html',
      controller: 'grumbleController',
      controllerAs: 'grumbleCtrl'
+   }).otherwise({
+     redirectTo: "/grumbles"
    });
  }]);
 })();
