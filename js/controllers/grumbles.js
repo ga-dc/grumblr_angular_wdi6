@@ -21,7 +21,7 @@
       this.reset()
     }
     this.edit = function(index){
-      var grumble = this.grumbles[index] 
+      var grumble = this.grumbles[index]
       this.title = grumble.title
       this.authorName = grumble.authorName
       this.photoUrl = grumble.photoUrl
@@ -40,5 +40,23 @@
       this.formIsVisible = this.formIsVisible ? false : true
       this.reset()
     }
+  })
+
+  .controller('commentsController', function(){
+    this.comment = {
+      content: "",
+      author: ""
+    };
+    this.create = function(grumble){
+      var commentCopy = angular.copy(this.comment); //This doesn't feel right but before I was just pushing the reference to comment which would change when I reset comment
+      (grumble.comments? grumble.comments.push(commentCopy) : grumble.comments = [commentCopy]);
+      this.comment = {content: "", author: ""};
+    };
+    this.delete = function(grumble, index){
+      grumble.comments.splice(index, 1);
+    };
+    this.edit = function(grumble, index){
+      var comment = angular.copy(grumble.comments[index])
+    };
   });
 })();
