@@ -1,0 +1,18 @@
+<div id="editGrumble">
+  <p>Edit This Grumble</p>
+  <form class='grumbleForm' ng-submit="updateCtrl.update()">
+    <label>Title</label>
+    <input type="text" name="title" ng-model="updateCtrl.grumble.title">
+
+    <label>Author Name</label>
+    <input type="text" name="authorName" ng-model="updateCtrl.grumble.authorName">
+
+    <label>Content</label>
+    <textarea name="content" ng-model="updateCtrl.grumble.content">new grumble content</textarea>
+
+    <label>Photo Url</label>
+    <input type="text" name="photoUrl" ng-model="updateCtrl.grumble.photoUrl">
+
+    <input type="submit" value="Update Grumble">
+</form>
+</div>

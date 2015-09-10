@@ -2,6 +2,14 @@
 
 (function() {
   var app = angular.module('grumblr', [
-    'grumbleControllers'
+      // dependency injection
+      //our controller
+    'grumbleControllers',
+    'ngRoute',
+    'ngResource',
+    //our API
+    'grumbleServices',
+    // our router
+    'grumbleRouter'
   ]);
 })()
