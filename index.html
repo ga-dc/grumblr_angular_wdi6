@@ -56,7 +56,15 @@
           <input type="text" name="content">
           <button>Submit</button>
         </form>
-        <div class="comments"></div>
+        <div class="comments">
+          <h2>Comments</h2>
+          <div ng-repeat="comment in grumble.comments">
+            <p>{{ comment.content }} - {{ comment.author }}</p>
+          </div>
+
+          <center>- - - - - - - - - - - - - - - - - - - -</center>
+
+        </div>
       </div>
     </div>
   </div>
