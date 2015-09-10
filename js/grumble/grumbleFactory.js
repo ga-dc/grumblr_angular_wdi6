@@ -28,17 +28,17 @@
       function create(){
         return $firebase.create(this).then(function(response){
           grumble = response;
-          $location.path("/grumbles/" + response.key());
+          $location.path("./grumbles/" + response.key());
         });
       }
       function update(){
         return $firebase.update(this).then(function(response){
-          $location.path("/grumbles/" + response.key());
+          $location.path("./grumbles/" + response.key());
         });
       }
       function destroy(){
         return $firebase.destroy(this).then(function(){
-          $location.path("/grumbles");
+          $location.path("./grumbles");
         });
       }
     }
