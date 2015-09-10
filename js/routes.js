@@ -1,3 +1,8 @@
+//view - what user sees (representation of db)
+//model - actual db
+//viewmodel - connects view and model
+//two way data binding - when one changes, the other changes
+
 (function(){
   var router = angular.module('grumbleRouter', []);
   router.config([

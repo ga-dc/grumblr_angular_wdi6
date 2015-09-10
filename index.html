@@ -1,13 +1,23 @@
+<!-- app entry point - inc. all required scripts and stylesheets
+ng-app defines the portion of our html that JS will be applied to - here it will be applied to entire DOM since ng-app tag is on html tag
+can use {{}} where ng-app is defined
+{{}} syntax lets us execute JS code in index.html (like crying clown hats in Ruby) -->
+
 <html ng-app="grumblr">
   <head>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- Angular's $resource service lets us interact with RESTful backends easily. Use it if you're doing CRUD.
+    Must include it in our HTML here b/c it doesn't coem w/Angular by default. -->
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="js/app.js"></script>
+    <!-- connect routes -->
     <script src="js/routes.js"></script>
+    <!-- add controller as dependency in html -->
     <script src="js/controllers/grumbles.js"></script>
+    <!-- add services -->
     <script src="js/services/grumble.js"></script>
     <link rel="stylesheet" href="css/style.css">
   </head>
