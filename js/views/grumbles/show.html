@@ -12,4 +12,13 @@
         {{  comment.content  }}
         <p>By: {{comment.authorName}}</p>
     </div>
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment(grumbleCtrl.comment)">
+        <label>Author Name:</label>
+        <input type="text" ng-model="grumbleCtrl.comment.authorName" name="authorName">
+
+        <label>Content:</label>
+        <input type="text" ng-model="grumbleCtrl.comment.content" name="content">
+
+        <button type="submit">Submit</button>
+  </form>
 </div>
