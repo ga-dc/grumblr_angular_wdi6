@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="grumblr">
+<head>
+ <meta charset="UTF-8">
+ <title>Grumblr</title>
+ <script src="bower_components/jquery/dist/jquery.min.js"></script>
+ <script src="bower_components/angular/angular.min.js"></script>
+ <script src="js/app.js"></script>
+ <script src="js/controllers/grumblr.js"></script>
+</head>
+<body>
+  <div ng-controller="grumblrController as grumblrCtrl">
+
+    <!-- Create Grumble -->
+    <div ng-click="grumblrCtrl.toggleForm()">New Grumblr</div>
+    <form ng-show="grumblrCtrl.formIsVisible" ng-submit="grumblrCtrl.createGrumble()">
+      <label>Title</label>
+      <input type="text" name="title" ng-model="grumblrCtrl.grumbles.title">
+      <label>Author Name</label>
+      <input type="text" name="authorName" ng-model="grumblrCtrl.grumbles.authorName">
+      <label>Content</label>
+      <input type="text" name="content" ng-model="grumblrCtrl.grumbles.content">
+      <label>Photo Url</label>
+      <input type="text" name="photoUrl" ng-model="grumblrCtrl.grumbles.photoUrl">
+      <input type="submit">
+    </form>
+
+    <!-- create comment -->
+    <div ng-click="grumblrCtrl.toggleComment()">New Comment</div>
+    <form ng-show="grumblrCtrl.commenterIsVisible" ng-submit="grumblrCtrl.createComment()">
+      <label>Author</label>
+      <input type="text" name="author" ng-model="grumblrCtrl.grumbles.comment.author">
+      <label>Comment</label>
+      <input type="text" name="authorName" ng-model="grumblrCtrl.grumbles.comment.comment">
+    </form<
+
+        <!-- List Grumbles -->
+    <div ng-repeat="grumbles in grumblrCtrl.grumbles">
+      <p ng-show="!editGrumble">{{ ($index + 1) + ". " }}</p>
+      <p> {{this.grumbles.title}} </p>
+      <p>{{this.grumbles.authorName}}</p>
+      <p>{{this.grumbles.content}}</p>
+      <p><img src= {{this.grumbles.photoUrl}}></p>
+      <!-- list comments -->
+   <div ng-repeat="grumbles.comments in grumblrCtrl.grumbles">
+     <p> {{this.grumbles.comment.author}} </p>
+     <p>{{this.grumbles.comment.comment}}</p>
+
+        <!-- edit Grumbles -->
+      <button class ="edit" ng-click="grumblrCtrl.edit($index); editGrumble= !editGrumble">Edit Grumble</button>
+      <form ng-show="editGrumble">
+        <input type="text" placeholder="title" ng-model="grumblrCtrl.title">
+        <input type="text" placeholder="authorName" ng-model="grumblrCtrl.authorName">
+        <input type="text" placeholder="content" ng-model="grumblrCtrl.content">
+        <input type="text" placeholder="photoUrl" ng-model="grumblrCtrl.photoUrl">
+
+        <button class="new" ng-click="grumblrCtrl.updateGrumble($index); editGrumble = !editGrumble">Save</button>
+        <button ng-click='editGrumble = !editGrumble' class='cancel'>Cancel</button>
+      </form>
+      <button class="delete" ng-click="grumblrCtrl.delete($index)">Delete</button>
+
+    </div>
+  </div>
+  </div>
+</body>
+</html>
