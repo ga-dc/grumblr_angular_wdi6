@@ -8,7 +8,7 @@
         <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}">
         <a ng-href="#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
     </div>
-    <div class="comment" ng-repeat="comment in grumbleCtrl.grumble.comments">
+    <div class="comment" ng-repeat="comment in grumbleCtrl.grumble.comments | orderBy: '-created_at'">
         {{  comment.content  }}
         <p>By: {{comment.authorName}}</p>
         <button ng-click="grumbleCtrl.deleteComment(comment, $index)">Delete</button>
