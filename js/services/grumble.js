@@ -1,7 +1,7 @@
 (function() {
   var grumbleServices = angular.module('grumbleServices', ['ngResource']);
   grumbleServices.factory('Grumble', ['$firebaseObject','$firebaseArray', function($firebaseObject, $firebaseArray) {
-    var ref = new Firebase('https://grumblr-angular.firebaseio.com/grumbles')
+    var ref = new Firebase(firebaseURL)
     var grumbles = $firebaseArray(ref)
     var Grumble = {
       all: grumbles,
@@ -17,7 +17,7 @@
         return found
       },
       delete: function(grumble, cb){
-	return grumbles.$remove(grumbles.$getRecord(grumble.id)) 
+	return grumbles.$remove(grumbles.$getRecord(grumble.id))
       }
     }
     return Grumble
