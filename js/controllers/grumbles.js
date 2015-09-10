@@ -22,8 +22,7 @@
 	self.comment = {}
       })
     }
-  }]);
-
+  }])
   // new form controller (handles creation)
   grumbleControllers.controller('newGrumbleController', ["$location", 'Grumble', function($location, Grumble){
     this.create = function(){
@@ -41,5 +40,5 @@
       this.grumble.$save();
       $location.path("/grumbles/" + this.grumble.$id)
     }
-  }])
+  }]);
 })();

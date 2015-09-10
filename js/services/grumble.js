@@ -17,7 +17,7 @@
         return found
       },
       delete: function(grumble, cb){
-	return grumbles.$remove(grumbles.$getRecord(grumble.id)) 
+	return grumbles.$remove(grumbles.$getRecord(grumble.id))
       }
     }
     return Grumble
