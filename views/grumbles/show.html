@@ -9,6 +9,7 @@
       <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="">
     </div>
     <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
+
     <form class="commentForm">
       <label>Author Name:</label>
       <input type="text" name="authorName">
@@ -16,6 +17,10 @@
       <input type="text" name="content">
       <button>Submit</button>
     </form>
-    <div class="comments"></div>
+
+    <div class="comments" ng-repeat="comment in grumblesCtrl.grumbles"> <!-- ng-repeat is great because each item has it's own scope -->>
+      <p>{{comment.content}}</p>
+    </div>
+
   </div>
 </div>
