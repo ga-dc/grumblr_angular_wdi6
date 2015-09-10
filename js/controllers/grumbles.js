@@ -7,13 +7,16 @@
   }]);
 
   // show controller (handles delete link on show page)
-  grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', function($routeParams, $location, $http, Grumble){
-    this.grumble = Grumble.get({id: $routeParams.id});
+  grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', 'Comment', function($routeParams, $location, $http, Grumble, Comment){
+
+    this.grumble = Grumble.get({id: $routeParams.id}); // We can call this id because we said it had one in our route.js .when route path.
+
     this.delete = function(id){
       Grumble.delete({id: id}, function(){
         $location.path("/grumbles");
       });
     };
+
   }]);
 
   // new form controller (handles creation)
