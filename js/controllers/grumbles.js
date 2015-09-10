@@ -21,7 +21,7 @@
       this.reset()
     }
     this.edit = function(index){
-      var grumble = this.grumbles[index] 
+      var grumble = this.grumbles[index]
       this.title = grumble.title
       this.authorName = grumble.authorName
       this.photoUrl = grumble.photoUrl
@@ -41,4 +41,17 @@
       this.reset()
     }
   });
+
+  app.controller('commentsController', function(){
+
+    this.create=function(grumble){
+      grumbles.comments.unshift({
+        content:grumble.newCommentContent
+
+      });
+
+      grumble.newCommentContent =""; 
+    }
+  });
+
 })();
