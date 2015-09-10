@@ -18,10 +18,11 @@
     };
     this.createComment = function(comment){
       var self = this;
-      Comment.save({grumbleId: $routeParams.id},comment, function(comment){
-        self.grumble.comments.push(comment);
-        self.comment = {};
-      });
+      // TODO: move comment support to firebase
+      // Comment.save({grumbleId: $routeParams.id},comment, function(comment){
+      //   self.grumble.comments.push(comment);
+      //   self.comment = {};
+      // });
     };
   }]);
 
