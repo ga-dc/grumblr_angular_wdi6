@@ -1,0 +1,27 @@
+<div>
+  <div class="grumble">
+    <div>
+      <h2><a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}">{{ grumbleCtrl.grumble.title }}</a> <span class='delete' ng-click="grumbleCtrl.delete(grumbleCtrl.grumble.id)">(X)</span></h2>
+      by: {{ grumbleCtrl.grumble.authorName }}
+      <p>
+        {{ grumbleCtrl.grumble.content }}
+      </p>
+      <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="">
+    </div>
+    <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
+
+    <div ng-repeat="comment in grumbleCtrl.comments">
+    <h2>{{comment.authorName}}<span class='delete' ng-click="grumbleCtrl.deleteComment(comment.id)">(X)</span></h2>
+      <p>{{comment.content}}</p>
+    </div>
+
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment()">
+      <label>Author Name:</label>
+      <input type="text" name="authorName" ng-model="grumbleCtrl.comments.authorName">
+      <label>Content:</label>
+      <input type="text" name="content" ng-model="grumbleCtrl.comments.content">
+      <button>Submit</button>
+    </form>
+    <div class="comments"></div>
+  </div>
+</div>
