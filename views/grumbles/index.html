@@ -10,14 +10,21 @@
         </p>
         <img ng-src="{{ grumble.photoUrl }}" alt="">
       </div>
-      <form class="commentForm">
+      <!-- <form class="commentForm">
         <label>Author Name:</label>
         <input type="text" name="authorName">
         <label>Content:</label>
         <input type="text" name="content">
         <button>Submit</button>
-      </form>
-      <div class="comments"></div>
+      </form> -->
+      <!-- <div class="comments">
+        <ul ng-repeat="comment in grumbleCtrl.grumble.comments | orderBy:'-created_at'">
+        <li>
+          <strong>{{comment.authorName}}</strong>
+          <small>{{comment.created_at}}</small><br>
+          {{comment.content}}
+        </li> -->
+      </div>
     </div>
   </div>
 </div>
