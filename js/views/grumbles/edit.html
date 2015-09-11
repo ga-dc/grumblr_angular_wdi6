@@ -1,0 +1,9 @@
+<h2>Edit Grumble</h2>
+<form name="grumbleCtrl.grumbleForm" class="grumbleForm">
+  <input type="text" name="title" ng-model="grumbleCtrl.grumble.title" placeholder="title">
+  <input type="text" name="authorName" ng-model="grumbleCtrl.grumble.authorName" placeholder="author name">
+  <input type="text" name="content" ng-model="grumbleCtrl.grumble.content" placeholder="content">
+  <input type="text" name="photoUrl" ng-model="grumbleCtrl.grumble.photoUrl" placeholder="photo url">
+  <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}">Go Back</a>
+  <button class="new" ng-click="grumbleCtrl.update()">Save</button>
+</form>
