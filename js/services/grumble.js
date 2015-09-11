@@ -7,3 +7,8 @@
     });
   }]);
 })();
+
+  grumbleServices.factory('Comment', ['$resource', function($resource) {
+    return $resource('http://grumblr.wdidc.org/grumbles/comment.grumble_id', {},{
+  });
+}])();
