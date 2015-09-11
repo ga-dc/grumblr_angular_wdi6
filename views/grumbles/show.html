@@ -17,5 +17,10 @@
       <button>Submit</button>
     </form>
     <div class="comments"></div>
+    <h2><a ng-href="/#/comments/{{commentCtrl.grumble.id.comment}}">{{ grumbleCtrl.grumble.title }}</a> <span class='delete' ng-click="grumbleCtrl.delete(grumbleCtrl.grumble.id)">(X)</span></h2>
+    by: {{ grumbleCtrl.grumble.authorName }}
+    <p>
+      {{ grumbleCtrl.grumble.content }}
+    </p>
   </div>
 </div>
