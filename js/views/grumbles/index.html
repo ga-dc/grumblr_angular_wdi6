@@ -1,0 +1,10 @@
+<div class='grumbles' ng-repeat='grumble in grumblesCtrl.grumbles'>
+  <div class="grumble">
+      <a href="/#grumbles/{{grumble.id}}"><h2>{{ grumble.title }}</h2></a>
+      by: {{ grumble.authorName }}
+      <p>
+        {{ grumble.content }}
+      </p>
+      <img ng-src="{{ grumble.photoUrl }}" alt="image of {{grumble.title}}">
+  </div>
+</div>

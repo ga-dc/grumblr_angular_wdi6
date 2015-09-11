@@ -1,0 +1,11 @@
+<div class="grumble">
+    <h2>{{ grumbleCtrl.grumble.title }} <span class='delete' ng-click="grumbleCtrl.delete()">(X)</span></h2>
+    by: {{ grumbleCtrl.grumble.authorName }}
+    <p>
+      {{ grumbleCtrl.grumble.content }}
+    </p>
+    <ul ng-repeat="comment in grumbleCtrl.grumble.comments">
+      <li>{{comment.content}}<span>Posted by: {{comment.authorName}}</span></li>
+    </ul>
+    <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="image of {{grumbleCtrl.grumble.title}}">
+</div>
