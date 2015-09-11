@@ -13,6 +13,13 @@
           grumble.comments = Comment.query({grumble_id: $routeParams.id});
     });
 
+    // create comment method (handles create on show page)
+    this.createComment = function(comment){
+      console.log(comment)
+      console.log("click is working")
+
+     };
+
     this.delete = function(id){
       Grumble.delete({id: id}, function(){
         $location.path("/grumbles");

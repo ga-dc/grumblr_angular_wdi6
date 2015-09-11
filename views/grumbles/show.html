@@ -10,11 +10,11 @@
     </div>
     <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
 
-    <form class="commentForm">
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment(grumbleCtrl.comment)"> <!-- reference show action grumbleCtrl .createComment() and pass in comment as argument -->
       <label>Author Name:</label>
-      <input type="text" name="authorName">
+      <input type="text" name="authorName" ng-model="grumbleCtrl.comment.authorName">
       <label>Content:</label>
-      <input type="text" name="content">
+      <input type="text" name="content" ng-model="grumbleCtrl.comment.content">
       <button>Submit</button>
     </form>
 
