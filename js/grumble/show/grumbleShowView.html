@@ -1,0 +1,10 @@
+<div class="grumble">
+  <h2><a data-ng-href="/#/grumbles/{{grumble.$id}}">{{grumble.title}}</a></h2>
+  <p data-ng-if="showButtons">
+    <a data-ng-click="grumble.$destroy()">Delete</a>
+    <a data-ng-href="/#/grumbles/{{grumble.$id}}/edit">Edit</a>
+  </p>
+  <p>by: {{grumble.authorName}}</p>
+  <p>{{grumble.content}}</p>
+  <img data-ng-src="{{grumble.photoUrl}}" alt="{{grumble.title}}" />
+</div>
