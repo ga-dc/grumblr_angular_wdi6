@@ -16,18 +16,16 @@
     // comments#delete
     this.deleteComment = function(commentId, index){
       Comment.delete({grumble_id: this.grumble.id, id: commentId}, function(index){
-        // self.grumble.comments.splice(index + 1, 1);           // trying to trigger visual affect of comment being deleted
+        // self.grumble.comments.splice(index + 1, 1);           // trying to trigger visual of comment being deleted without reload
       });
     };
     // comments#create
-    this.createComment = function(){
+    this.createComment = function(commentData){
       this.grumble.$promise.then(function(grumble){
-        Comment.save({grumble_id: grumble.id }, {
-          authorName: self.authorName,
-          content: self.content,
-          grumble_id: grumble.id
-        }).$promise.then(function(){
-          // Comment.query({grumble_id: self.grumble.id});    // trying to trigger comments reload to update new comment
+        Comment.save(
+          {grumble_id: grumble.id }, commentData
+        ).$promise.then(function(newComment){
+          self.grumble.comments.push(newComment);
         });
       });
     };
