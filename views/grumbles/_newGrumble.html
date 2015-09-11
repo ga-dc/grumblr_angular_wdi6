@@ -1,0 +1,17 @@
+<form name="grumbleForm" class='grumbleForm'>
+  <label>Title</label>
+  <input type="text" name="title" ng-model="grumble.title">
+  <label>Author Name</label>
+  <input type="text" name="authorName" ng-model="grumble.authorName">
+  <label>Content</label>
+  <textarea name="content" ng-model="grumble.content">new grumble content</textarea>
+  <label>Photo Url</label>
+  <input type="text" name="photoUrl" ng-model="grumble.photoUrl">
+  <span ng-if="editing">
+    <a ng-href="/#/grumbles/{{grumble.id}}">&larr; Back</a>
+    <button type="button" ng-click="update()">Save</button>
+  </span>
+  <span ng-if="!editing">
+    <button type="button" ng-click="create()">New Grumble</button>
+  </span>
+</form>
