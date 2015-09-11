@@ -50,8 +50,6 @@
   app.controller('grumbleController',['$routeParams','Grumble','$location',function($routeParams, Grumble, $location){
     this.grumble = Grumble.get({id: $routeParams.id})
     this.delete = function(){
-      console.log("delete method invoked")
-      console.log("grumble", this.grumble)
       Grumble.remove({id: this.grumble.id}, function(){
         $location.path("/grumbles")
       })
@@ -66,6 +64,12 @@
       })
     }
   }])
+
+  app.controller('editGrumbleController', ['$routeParams', 'Grumble', '$location', function($routeParams, Grumble, $location){
+      this.grumble = Grumble.get({id: $routeParams.id})
+      this.edit = function(){
+        this.grumble.$update({id: this.grumble.id});
+        $location.path("/grumbles/" + this.grumble.id)
 
   app.controller( 'commentsController', function(){
 
