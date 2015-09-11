@@ -1,0 +1,15 @@
+<!-- Grumble Edit View -->
+<div>
+  <form class='grumbleForm' ng-submit="editGrumbleCtrl.update()">
+    <label>Title</label>
+    <input type="text" name="title" ng-model="editGrumbleCtrl.grumble.title" >
+    <label>Author Name</label>
+    <input type="text" name="authorName" ng-model="editGrumbleCtrl.grumble.authorName">
+    <label>Content</label>
+    <textarea name="content" ng-model="editGrumbleCtrl.grumble.content"></textarea>
+    <label>Photo Url</label>
+    <input type="text" name="photoUrl" ng-model="editGrumbleCtrl.grumble.photoUrl">
+    <a class='button' ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}">Cancel</a>
+    <button class='button'>Save</button>
+  </form>
+</div>
