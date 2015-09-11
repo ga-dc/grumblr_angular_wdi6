@@ -9,13 +9,19 @@
       <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="">
     </div>
     <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
-    <form class="commentForm">
+
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment(grumbleCtrl.comment)"> <!-- reference show action grumbleCtrl .createComment() and pass in comment as argument -->
       <label>Author Name:</label>
-      <input type="text" name="authorName">
+      <input type="text" name="authorName" ng-model="grumbleCtrl.comment.authorName">
       <label>Content:</label>
-      <input type="text" name="content">
+      <input type="text" name="content" ng-model="grumbleCtrl.comment.content">
       <button>Submit</button>
     </form>
-    <div class="comments"></div>
+
+    <div class="comments" ng-repeat="comment in grumbleCtrl.grumble.comments"> <span class='delete' ng-click="grumbleCtrl.deleteComment(grumbleCtrl.grumble.id, grumbleCtrl.comment.id)">(x)</span><!-- ng-repeat is great because each item has it's own scope -->
+      <h3>{{comment.authorName}} | </h3> <h5>{{comment.created_at}}</h5>
+      <p>{{comment.content}}</p>
+    </div>
+
   </div>
 </div>
