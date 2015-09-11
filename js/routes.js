@@ -26,9 +26,9 @@
       }).
       otherwise({
         redirectTo: "/grumbles"
-      })
+      });
     }
-  ])
+  ]);
 
 
 })();

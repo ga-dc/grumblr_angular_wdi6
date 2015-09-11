@@ -9,13 +9,19 @@
       <img ng-src="{{ grumbleCtrl.grumble.photoUrl }}" alt="">
     </div>
     <a ng-href="/#/grumbles/{{grumbleCtrl.grumble.id}}/edit">Edit Grumble</a>
-    <form class="commentForm">
+    <form class="commentForm" ng-submit="grumbleCtrl.createComment()">
       <label>Author Name:</label>
-      <input type="text" name="authorName">
+      <input type="text" name="authorName" ng-model="grumbleCtrl.authorName">
       <label>Content:</label>
-      <input type="text" name="content">
+      <input type="text" name="content" ng-model="grumbleCtrl.content">
       <button>Submit</button>
     </form>
-    <div class="comments"></div>
+    <!-- Comments#index -->
+    <div class="comments" ng-repeat="comment in grumbleCtrl.grumble.comments">
+      <div class="comment">
+        <p>{{comment.authorName}} says: <span class="delete" ng-click="grumbleCtrl.deleteComment(comment.id, $index)">(X)</span></p>
+        <p>{{comment.content}}</p>
+      </div>
+    </div>
   </div>
 </div>

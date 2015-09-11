@@ -7,11 +7,33 @@
   }]);
 
   // show controller (handles delete link on show page)
-  grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', function($routeParams, $location, $http, Grumble){
-    this.grumble = Grumble.get({id: $routeParams.id});
+  grumbleControllers.controller('grumbleController', ['$routeParams','$location','$http', 'Grumble', 'Comment', function($routeParams, $location, $http, Grumble, Comment){
+    var self = this;
+    this.grumble = Grumble.get({id: $routeParams.id}, function(grumble){
+      //comments#index
+       self.grumble.comments = Comment.query({grumble_id: grumble.id});
+    });
+    // comments#delete
+    this.deleteComment = function(commentId, index){
+      Comment.delete({grumble_id: this.grumble.id, id: commentId}, function(index){
+        // self.grumble.comments.splice(index + 1, 1);           // trying to trigger visual affect of comment being deleted
+      });
+    };
+    // comments#create
+    this.createComment = function(){
+      this.grumble.$promise.then(function(grumble){
+        Comment.save({grumble_id: grumble.id }, {
+          authorName: self.authorName,
+          content: self.content,
+          grumble_id: grumble.id
+        }).$promise.then(function(){
+          // Comment.query({grumble_id: self.grumble.id});    // trying to trigger comments reload to update new comment
+        });
+      });
+    };
     this.delete = function(id){
       Grumble.delete({id: id}, function(){
-	$location.path("/grumbles");
+	       $location.path("/grumbles");
       });
     };
   }]);
