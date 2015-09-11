@@ -7,7 +7,8 @@
   });
   directives.directive('grumble', function(){
     return {
-      templateUrl: "views/grumbles/_grumble_save.html"
+      templateUrl: "views/grumbles/_grumble_save.html",
+      restrict: "EA"
     }
   });
 })();
