@@ -1,0 +1,87 @@
+<html ng-app="grumblr">
+<head>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="js/controllers/grumbles.js"></script>
+  <script src="js/controllers/comments.js"></script>
+  <script src="js/app.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Grumblr</h1>
+
+
+  <div ng-controller="grumblesController as grumblesCtrl">
+    <div id="createGrumble">
+      <a href="#" ng-click="grumblesCtrl.toggleForm()">New Grumble</a>
+      <form ng-show="grumblesCtrl.formIsVisible" name="grumblesCtrl.grumbleForm" class='grumbleForm' ng-submit="grumblesCtrl.create()">
+        <label>Title</label>
+        <input type="text" name="title" ng-model="grumblesCtrl.title">
+        <label>Author Name</label>
+        <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
+        <label>Content</label>
+        <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
+        <label>Photo Url</label>
+        <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+        <button class="new">New Grumble</button>
+      </form>
+    </div>
+
+    <div class="grumbles" ng-repeat="grumble in grumblesCtrl.grumbles">
+      <div class="grumble">
+        <div ng-show="!editGrumble">
+          <h2>{{ grumble.title }} <span class='delete' ng-click="grumblesCtrl.delete($index)">(X)</span></h2>
+          by: {{ grumble.authorName }}
+          <p>
+            {{ grumble.content }}
+          </p>
+          <img ng-src="{{ grumble.photoUrl }}" alt="">
+        </div>
+        <button class="edit" ng-click="grumblesCtrl.edit($index); editGrumble = !editGrumble">Edit Grumble</button>
+        <form ng-show="editGrumble" name="grumblesCtrl.grumbleForm" class='grumbleForm'>
+          <label>Title</label>
+          <input type="text" name="title" ng-model="grumblesCtrl.title">
+          <label>Author Name</label>
+          <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
+          <label>Content</label>
+          <textarea name="content" ng-model="grumblesCtrl.content">new grumble content</textarea>
+          <label>Photo Url</label>
+          <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+          <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
+          <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
+        </form>
+
+        <div ng-controller="commentsController as commentsCtrl">
+          <div id="createComment">
+            <button ng-click="commentsCtrl.toggleForm()"> Add a New Comment</button>
+            <form ng-show="commentsCtrl.formIsVisible" name="commentsCtrl.grumbleForm" class='commentForm' ng-submit="commentsCtrl.create()">
+              <label>Author Name</label>
+              <input type="text" name="authorName" ng-model="commentsCtrl.authorName">
+              <label>Content</label>
+              <textarea name="content" ng-model="commentsCtrl.content">new comment content</textarea>
+              <button class="new">Submit New Comment</button>
+            </form>
+          </div>
+
+          <div class="comments" ng-repeat="comment in commentsCtrl.comments">
+            <div class="comment">
+              <div ng-show="!editComment">
+                <h2>{{ comment.authorName }} <span class='delete' ng-click="commentsCtrl.delete($index)">(X)</span></h2>
+                <p>
+                  {{ comment.content }}
+                </p>
+              </div>
+              <button class="edit" ng-click="commentsCtrl.edit($index); editComment = !editComment">Edit Comment</button>
+              <form ng-show="editComment" name="commentsCtrl.commentForm" class='commentForm'>
+                <label>Author Name</label>
+                <input type="text" name="authorName" ng-model="commentsCtrl.authorName">
+                <label>Content</label>
+                <textarea name="content" ng-model="commentsCtrl.content">new comment content</textarea>
+                <button class="new" ng-click="commentsCtrl.update($index); editComment = !editComment">Save</button>
+                <button ng-click="editComment = !editComment" class="new">Cancel</button>
+              </form>
+
+    </div>
+  </div>
+</body>
+</html>
