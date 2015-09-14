@@ -1,0 +1,16 @@
+body{
+  background-color: lemonchiffon;
+}
+
+img{
+  height: 250px;
+  width: 250px;
+}
+
+.grumble{
+  border: 2px solid blue;
+}
+
+input{
+  display: block;
+}
