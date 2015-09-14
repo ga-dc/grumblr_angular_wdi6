@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='grumblr'>
+<head>
+ <meta charset="UTF-8">
+ <title>Grumblr</title>
+ <script src="bower_components/jquery/dist/jquery.min.js"></script>
+ <script src="bower_components/angular/angular.min.js"></script>
+ <script src="js/app.js"></script>
+  <script src="js/controllers/grumbles.js"></script>
+</head>
+<body>
+  <h1>Grumblr</h1>
+  <div ng-controller="grumblesController as grumblesCtrl">
+    <!--New Grumble-->
+    <div ng-click="grumblesCtrl.toggleForm()">+</div>
+      <form ng-show="grumblesCtrl.formIsVisible" name="grumblesCtrl.grumbleForm" ng-submit="grumblesCtrl.create()">
+        <label>Title</label>
+        <input type="text" name="title" ng-model="grumblesCtrl.title">
+        <label>Author Name</label>
+        <input type="text" name="authorName" ng-model="grumblesCtrl.authorName">
+        <label>content</label>
+        <input type="text" name="content" ng-model="grumblesCtrl.content">
+        <label>Photo Url</label>
+        <input type="text" name="photoUrl" ng-model="grumblesCtrl.photoUrl">
+        <button class="new">New Grumble</button>
+      </form>
+      <!--Show Grumble-->
+      <div ng-repeat="grumblr in grumblesCtrl.grumbles">
+      <h2 ng-show='!editGrumblr'>{{grumblr.title}}</h2>
+      <img ng-src="{{grumblr.photoUrl }}" width:"42">
+      <h4>{{grumblr.authorName}}</h4>
+      <p>{{grumblr.content}}</p>
+      <!--Edit Grumble-->
+      <button class="edit" ng-click="grumblesCtrl.edit($index); editGrumble = !editGrumble">Edit</button>
+      <form ng-show='editGrumble' name="grumblesCtrl.grumbleForm" class='grumbleForm'>
+        <label>Title</label>
+        <input type="text" name="title">
+        <label>Author Name</label>
+        <input type="text" name="authorName">
+        <label>content</label>
+        <input type="text" name="content">
+        <label>Photo Url</label>
+        <input type="text" name="photoUrl">
+        <button class="new" ng-click="grumblesCtrl.update($index); editGrumble = !editGrumble">Save</button>
+        <button ng-click="editGrumble = !editGrumble" class="new">Cancel</button>
+      </form>
+
+    </div> <!-- END ng-repeat -->
+  </div>   <!--END ng-controller-->
+</body>
+</html>
