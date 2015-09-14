@@ -36,8 +36,9 @@
           scope.grumble = Grumble.get({id: $routeParams.id});
         }
         scope.update = function(){
-          scope.grumble.$update({id: scope.grumble.id});
-          $location.path("/grumbles/" + this.grumble.id)
+          scope.grumble.$update({id: scope.grumble.id}).then(function(){
+            $location.path("/grumbles/" + this.grumble.id)
+          });
         }
         scope.create = function(){
           Grumble.save(scope.grumble, function(grumble) {
