@@ -1,0 +1,13 @@
+<form ng-submit=".create()">
+    <label>Title</label>
+    <input type="text" name="title" ng-model="grumbleCtrl.grumble.title">
+    <label>Author Name</label>
+    <input type="text" name="authorName" ng-model="grumbleCtrl.grumble.authorName">
+    <label>Content</label>
+    <textarea name="content" ng-model="grumbleCtrl.grumble.content">new grumble content</textarea>
+    <label>Photo Url</label>
+    <input type="text" name="photoUrl" ng-model="grumbleCtrl.grumble.photoUrl">
+    <button class="update" ng-click="update()">Save</button>
+    <button class="new" ng-click="create()">New Grumble</button>
+  </form>
+</div>
