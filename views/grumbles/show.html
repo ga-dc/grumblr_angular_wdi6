@@ -1,0 +1,21 @@
+<div>
+  <div class="grumble">
+    <grumble />
+    <a ng-href="/#/grumbles/{{grumble.id}}/edit">Edit Grumble</a>
+  </div>
+  <form class="commentForm" ng-submit="createComment(comment)">
+    <label>Author Name:</label>
+    <input type="text" ng-model="comment.authorName" name="authorName">
+    <label>Content:</label>
+    <input type="text" ng-model="comment.content" name="content">
+    <button type="submit">Submit</button>
+  </form>
+  <ul ng-repeat="comment in comments | orderBy:'-created_at'">
+    <li>
+      <strong>{{comment.authorName}}</strong>
+      <small>{{comment.created_at}}</small><br>
+      {{comment.content}}
+    </li>
+  </div>
+
+</div>
